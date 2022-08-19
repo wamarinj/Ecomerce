@@ -33,6 +33,16 @@ document.addEventListener( "DOMContentLoaded", () =>{
 
 })
 
+
+
+window.addEventListener('scroll', function(){
+  if(window.scrollY >= 66){
+    document.getElementById('header').classList.add('headerScroll')
+  }else{
+    document.getElementById('header').classList.remove('headerScroll')
+  }
+})
+
 function getDataFromLocalStorage() {
   let total = 0
   if(localStorage.getItem('cart')){
@@ -74,9 +84,12 @@ const productContainer = document.querySelector( "#products-lists" )
 
     products.map(  product =>{
       fragment += `
-      <div class="product-card" id="${product.id}">
+            <div class="product-card" id="${product.id}">
           <img src=${product.image} class="image-product" alt="">
           <button class="btn-add" onclick="addProduct(${product.id})">ADD</button>
+          <h1>$${product.price}</h1>
+          <h1>Stock${product.quantity}
+          <h2>${product.category}
         </div>
         `
     } )
